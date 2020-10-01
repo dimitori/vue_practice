@@ -1,0 +1,42 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title>vue_practice</title>
+
+
+</head>
+
+<body>
+  <div id="app">
+    <p v-if="hours < 12">Good morning.>
+    <p v-else>Good afternoon</p>
+    <p> It's {{ hours }} now.</p>
+
+
+    <ul>
+      <li v-for="dog in dogs"> {{ dog }} </li>
+    </ul>
+    <ol>
+      <li v-for="num in 10">{{ num - 1 }}</li>
+    </ol>
+  </div>
+
+
+  <script src="https://unpkg.com/vue"></script>
+
+  <script>
+    vm = new Vue({
+      el: "#app",
+      data: {
+        hours : new Date().getHours(),
+        dogs: ['Rex', 'Chif', 'Quest']
+      }
+    })
+  </script>
+
+
+</body>
+
+</html>

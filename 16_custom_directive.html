@@ -1,0 +1,35 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title>vue_practice</title>
+
+</head>
+
+<body>
+  <div id="app">
+    <p v-blink>Some blinking text</p>
+  </div>
+
+  <script src="https://unpkg.com/vue"></script>
+
+  <script>
+    vm = new Vue({
+      el: "#app",
+      directives: {
+        blink: {
+          bind(el) {
+            let isVisible = true;
+            setInterval(() => {
+              isVisible = !isVisible;
+              el.style.visibility = isVisible ? 'visible' : 'hidden';
+            }, 1000);
+          },
+        },
+      },
+    });
+  </script>
+
+</body>
+</html>

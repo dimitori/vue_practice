@@ -1,0 +1,35 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title>vue_practice</title>
+
+
+</head>
+
+<body>
+  <div id="app">
+    <p>{{ seconds }} have elapsed since you opened the page.</p>
+  </div>
+
+  <script src="https://unpkg.com/vue"></script>
+
+  <script>
+    vm = new Vue({
+      el: "#app",
+      data: {
+        seconds: 0,
+      },
+      created() {
+        setInterval(() => {
+          this.seconds++;
+        }, 1000)
+      }
+    });
+  </script>
+
+
+</body>
+
+</html>

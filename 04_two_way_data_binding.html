@@ -1,0 +1,50 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title>vue_practice</title>
+
+
+</head>
+
+<body>
+  <div id="app">
+    <p><b>doesn't work</b></p>
+    <label>
+      <input type="text" v-bind:value="inputText">
+    </label>
+    <p>{{ inputText }}</p>
+
+    <p><b>works</b></p>
+    <label>
+      <input type="text" v-model="inputText2">
+    </label>
+    <p>{{ inputText2.replace(/\s/g, '_') }}</p>
+
+    <label><input type="radio" v-model="value" value="one"> One</label>
+    <label><input type="radio" v-model="value" value="two"> Two</label>
+    <label><input type="radio" v-model="value" value="three"> Three</label>
+
+  </div>
+
+
+
+  <script src="https://unpkg.com/vue"></script>
+
+  <script>
+    // plus reactivity
+    vm = new Vue({
+      el: "#app",
+      data: {
+        inputText: 'some text',
+        inputText2: 'some text 2',
+        value: 'one',
+      },
+    });
+  </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title>vue_practice</title>
+
+
+</head>
+
+<body>
+  <div id="app">
+    <p>Current status: {{ statusFromId(statusId) }}</p>
+
+    <p>List of positive elements of this array: {{ numbers }}</p>
+    <ul>
+      <li v-for="num in filterPositive(numbers).sort()">{{ num }}</li>
+    </ul>
+  </div>
+
+
+
+  <script src="https://unpkg.com/vue"></script>
+
+  <script>
+    vm = new Vue({
+      el: "#app",
+      data: {
+        statusId: 2,
+        numbers: [-5, 0, 2, -1, 1, 0.5],
+      },
+      methods: {
+        statusFromId(id) {
+          const status = {
+            1: 'asleep',
+            2: 'eating',
+            3: 'farting',
+          }[id];
+          return status || 'Unknown status: ' + id;
+        },
+        filterPositive(numbers) {
+          return  this.numbers.filter((number) => number >= 0)
+        },
+      },
+    });
+  </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title>vue_practice</title>
+
+</head>
+
+<body>
+  <div id="app">
+    <label>
+      <input type="text" v-model="inputValue">
+    </label>
+    <p>{{ inputValue }}</p>
+    <p>{{ oldInputValue }}</p>
+  </div>
+
+  <script src="https://unpkg.com/vue"></script>
+
+  <script>
+    vm = new Vue({
+      el: "#app",
+      data: {
+        inputValue: '',
+        oldInputValue: '',
+      },
+      watch: {
+        inputValue() {
+          const newInputValue = this.inputValue;
+
+          setTimeout(() => {
+            this.oldInputValue = newInputValue
+          }, 3000);
+        },
+      },
+    });
+  </script>
+
+
+</body>
+
+</html>

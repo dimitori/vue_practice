@@ -1,0 +1,96 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title>vue_practice</title>
+
+  <style>
+    .main {
+      border: 2px solid pink;
+      width: 300px;
+    }
+    .main div {
+      border: 1px solid black;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div id="app">
+    <button @click="counter++">counter1</button>
+    <p>counter was increased {{ counter }} times</p>
+
+
+    <a @click.prevent="handleClick" href="ya.ru">ссылка</a>
+    <p> this clicks counter: {{ aCounter }}</p>
+
+
+    <a href="html/01_stop_propagation.html">Stop propagation pure example</a>
+    <br/>
+    <br/>
+
+    <div @click="handleDivClick" class="main">
+      <div>main click</div>
+      <div @click.stop="stopDivClick">stopped click</div>
+    </div>
+
+    <button @click.once="clickOnce">click once</button>
+
+    <div @click.capture="handleDivClick" class="main">
+      <div>main click</div>
+      <div @click.stop="stopDivClick">stopped but captured above click</div>
+    </div>
+
+    <form @keyup="handleKeyup">
+      <label>
+        <input type="text">
+      </label>
+    </form>
+
+    <p>another way</p>
+    <form @keyup.27="handleEscape">
+      <label>
+        <input type="text">
+      </label>
+    </form>  </div>
+
+  <script src="https://unpkg.com/vue"></script>
+
+  <script>
+    vm = new Vue({
+      el: "#app",
+      data: {
+        counter: 0,
+        aCounter: 0,
+      },
+      methods: {
+        handleClick(e) {
+          this.aCounter++;
+        },
+        handleDivClick(e) {
+          alert('main click');
+        },
+        stopDivClick(e) {
+          alert('stop click');
+        },
+        clickOnce(e) {
+          e.target.innerHTML = 'do nothing';
+          //setTimeout for rendering new innerHtml first
+          setTimeout(() => alert('only once'), 0)
+        },
+        handleKeyup(e) {
+          if (e.key === 'Escape') {
+            alert('exit');
+          }
+        },
+        handleEscape(e) {
+          alert('exit');
+        },
+      },
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title>vue_practice</title>
+
+
+</head>
+
+<body>
+  <div id="app">
+    <p>Source array: {{ numbers }}</p>
+    <p>Sum of numbers = {{ numbersTotal }}</p>
+  </div>
+
+
+
+  <script src="https://unpkg.com/vue"></script>
+
+  <script>
+    vm = new Vue({
+      el: "#app",
+      data: {
+        numbers: [3,4,5,8],
+      },
+      computed: {
+        numbersTotal() {
+          return this.numbers.reduce((sum, val) => sum + val);
+        },
+      },
+    });
+  </script>
+
+
+</body>
+
+</html>

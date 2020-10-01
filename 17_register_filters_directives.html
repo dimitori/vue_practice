@@ -1,0 +1,54 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title>vue_practice</title>
+
+</head>
+
+<body>
+  <div id="app">
+    <p v-blink>{{ "Some blinking text" | smallCase }}</p>
+    <p v-random-color>Colorfull text</p>
+  </div>
+
+  <script src="https://unpkg.com/vue"></script>
+
+  <script>
+    function getRandomColor() {
+      let letters = '0123456789ABCDEF';
+      let color = '#';
+      for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+      }
+      return color;
+  }
+
+
+    Vue.filter('smallCase', (val) => {
+      return val.toLowerCase();
+    });
+    Vue.directive('blink', {
+      bind(el) {
+        let isVisible = true;
+        setInterval(() => {
+          isVisible = !isVisible;
+          el.style.visibility = isVisible ? 'visible' : 'hidden';
+        }, 1000)
+      }
+    });
+    // directive for bind and update shortcut
+    Vue.directive('randomColor', (el) => {
+      el.style.transition = '1s'
+      setInterval(() => {
+        el.style.color = getRandomColor();
+      }, 1000);
+    });
+    vm = new Vue({
+      el: "#app",
+    });
+  </script>
+
+</body>
+</html>

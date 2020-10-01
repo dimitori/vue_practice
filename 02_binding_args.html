@@ -1,0 +1,44 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title>vue_practice</title>
+
+
+</head>
+
+<body>
+  <div id="app">
+    <button v-bind:disabled="buttonDisabled">Button</button>
+    <p :hidden="!buttonDisabled"> Countdown : {{ timer }} </p>
+    <!--^  there's shortcut for v-bind -->
+  </div>
+
+
+  <script src="https://unpkg.com/vue"></script>
+
+  <script>
+    // plus reactivity
+    vm = new Vue({
+      el: "#app",
+      data: {
+        timer: 4,
+        buttonDisabled: true,
+      },
+      created() {
+        setTimeout(() => {
+          this.buttonDisabled = false;
+        }, this.timer * 1000);
+
+        setInterval(() => {
+          this.timer--;
+        }, 1000);
+      },
+    });
+  </script>
+
+
+</body>
+
+</html>
